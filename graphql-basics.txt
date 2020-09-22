@@ -1,0 +1,28 @@
+1. Query language for an api.
+2. More effecient than REST api.
+3. Returns only the requested data and not entire resource.
+4. 2 types of data types:
+    a) Scalar
+    b) Objects
+    a) Scalar: Built-in datatypes:
+        - Integer
+        - String
+        - Float
+        - Boolean
+        - ID
+
+Mutations: Used to update value in API using Graphql.
+Example:
+mutation ($name: String!, $votes: Int!) {
+    create(babyInfo:{
+        name: $name,
+        votes: $votes
+    })
+    {
+        names     //Return values
+        votes     //Return Values
+    }
+
+}
+Note: ! --> denoted required argument.
+$variable_name -->denotes variables.
