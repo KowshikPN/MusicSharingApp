@@ -57,4 +57,5 @@ Backend = Django + Graphql
 
 17. To dynamically create a track, we need mutation to create a track.
     - Go to app/tracks/schema.py
-    
+    - Create Mutation class called as createTrack.
+    - Go to app/app/schema.py and include the Mutation class and add it to the schema.
