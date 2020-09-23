@@ -1,0 +1,28 @@
+Frontend = React
+Backend = Django + Graphql
+
+1. Install django, graphene-django, django-graphql-jwt, django-cors-headers
+    $pipenv install django graphene-django django-graphql-jwt django-cors-headers
+
+2. Install Codeformatter = autopep8 as a dev package.
+    $pipenv install --dev autopep8
+
+3. Create a django project called app.
+    $django-admin startproject app
+
+4. Create an initial database setup using manage.py file.
+    $cd app
+    $python manage.py migrate  #creates the sqlite3 database.
+
+5. Start the Django Server to check if it is working properly.
+    $python manage.py runserver
+
+6. Django separates the project into individual apps. We need individual app according to the type of data the app will have.
+    In this project we have two types: a) Tracks.
+                                        b) Users.
+7. To create an app in Django:
+    $python manage.py startapp tracks
+
+8. We need to model the tracks app. To build out the features of tracks app.
+    $cd tracks
+    $ open models.py

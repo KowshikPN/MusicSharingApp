@@ -26,3 +26,4 @@ mutation ($name: String!, $votes: Int!) {
 }
 Note: ! --> denoted required argument.
 $variable_name -->denotes variables.
+
