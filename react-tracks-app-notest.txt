@@ -26,3 +26,18 @@ Backend = Django + Graphql
 8. We need to model the tracks app. To build out the features of tracks app.
     $cd tracks
     $ open models.py
+
+9. Create a Track model class with fields title,description, url, created_at.
+
+10. To activate the model, go to app/app/settings.py
+    - Add the app name 'tracks' in the INSTALLED_APPS section.
+
+11. To update the database according to the Model, We make migrations.
+    -$python manage.py makemigrations
+    - $python manage.py migrate
+
+12. To write the data to database we can use django admin page or django interactive shell.
+    - $python manage.py shell #Starts the django shell.
+    - $from tracks.models import Track # To access the Track Model
+    - $Track.objects.create(title="title1", description="Track1 desc", url="https://track1.com") # Inserts the values to Track Table.
+    - $exit() #To exit from interactive shell.
