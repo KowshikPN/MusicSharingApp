@@ -41,3 +41,20 @@ Backend = Django + Graphql
     - $from tracks.models import Track # To access the Track Model
     - $Track.objects.create(title="title1", description="Track1 desc", url="https://track1.com") # Inserts the values to Track Table.
     - $exit() #To exit from interactive shell.
+
+13. We now need to use graphene(graphql library of python).
+    - In app/app/settings.py add 'graphene_django' in INSTALLED_APPS Section.
+    - Also, add a section: GRAPHENE = { 'SCHEMA': 'app.schema.schema'} # Allows to import graphene in schema.py
+
+14. Create schema file inside tracks app which allows to query the database using graphene.
+        - Returns all the tracks
+
+15. Create a generic schema file that can be used across apps(tracks, users).
+
+16. To interact with the data, we use graphiql ide.
+    - Go to app/app/urls.py
+    - add url pattern to access the ide.
+
+17. To dynamically create a track, we need mutation to create a track.
+    - Go to app/tracks/schema.py
+    
