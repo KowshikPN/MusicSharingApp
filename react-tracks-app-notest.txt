@@ -63,3 +63,25 @@ Backend = Django + Graphql
 18. Create the users app.
     - Create app/users/schema.py
     - We don't have to create separate Model for users as Django gives a robust user model out of the box.
+
+19. Created the schema for users and also created a query to get user details by Id.
+
+20 . Now need to authenticate the users using Django-Graphql JWT.
+    - $Go to app/app/settings.py
+    - In MIDDLEWARE Section, add the following:
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+    - Add graphene section
+    - Add JSONWebTokenBackend also.
+    Refer the this link: https://django-graphql-jwt.domake.io/en/latest/quickstart.html
+
+21. Create a query to validate the user in users/schema.py
+
+22. Install insomnia tool which is used to send the JWT to http headers using graphql.
+
+23. Connecting users and Tracks.
+    - Modify the Tracks Model by adding a Field called as "posted_by" (1:N relationship) Therefore it is a foreign key here.
+24. Now since the model is modified apply the migrations.
+
+
+
+
