@@ -86,7 +86,7 @@ Backend = Django + Graphql
     - Add the schema in the base Mutation class.
 
 26. Now create a query to get the likes for  a track.
-    
+
 
 
 
