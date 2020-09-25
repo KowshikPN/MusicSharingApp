@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+
 # Create your models here.
 #Track will be a table in the database and title, description,url, created_at will be columns of the table.
 
@@ -12,5 +13,5 @@ class Track(models.Model):
     posted_by = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
 
 class Like(models.Model):
-    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
-    track = models.ForeignKey('tracks.Track',related_name='likes',on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)  #foreign key
+    track = models.ForeignKey('tracks.Track',related_name='likes',on_delete=models.CASCADE) #foreign key

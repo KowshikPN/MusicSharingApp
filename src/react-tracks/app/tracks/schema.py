@@ -1,6 +1,7 @@
 import graphene
 from graphene_django import DjangoObjectType
-from .models import Track
+from .models import Track,Like
+from users.schema import UserType
 
 class TrackType(DjangoObjectType):
     class Meta:
@@ -71,8 +72,32 @@ class DeleteTrack(graphene.Mutation):
 
         return  DeleteTrack(track_id = track_id)
 
+class CreateLike(graphene.Mutation):
+    user = graphene.Field(UserType)
+    track = graphene.Field(TrackType)
+
+    class Arguments:
+        track_id = graphene.Int(required=True)
+
+    def mutate(self,info,track_id):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception("Login to like Tracks")
+
+        track = Track.objects.get(id=track_id)
+        if not track:
+            raise Exception("Cannot find the track with given track_id")
+
+        Like.objects.create(
+            user = user,
+            track = track
+        )
+
+        return  CreateLike(user=user, track=track)
+
 #Base Mutation Class
 class Mutation(graphene.ObjectType):
     create_track = CreateTrack.Field()
     update_track = UpdateTrack.Field()
     delete_track = DeleteTrack.Field()
+    create_like = CreateLike.Field()

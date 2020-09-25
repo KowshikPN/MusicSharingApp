@@ -82,6 +82,11 @@ Backend = Django + Graphql
     - Modify the Tracks Model by adding a Field called as "posted_by" (1:N relationship) Therefore it is a foreign key here.
 24. Now since the model is modified apply the migrations.
 
+25. Create likes Class in the Model and apply the migrations.
+    - Add the schema in the base Mutation class.
+
+26. Now create a query to get the likes for  a track.
+    
 
 
 
