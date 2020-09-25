@@ -87,6 +87,12 @@ Backend = Django + Graphql
 
 26. Now create a query to get the likes for  a track.
 
+27. Error handling can be done using GraphQLError.
+
+28. 
+
+
+
 
 
 
