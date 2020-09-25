@@ -10,3 +10,7 @@ class Track(models.Model):
     url = models.URLField()  #url to access the track
     created_at = models.DateTimeField(auto_now_add=True) #auto_now_add uses current date and time.
     posted_by = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+
+class Like(models.Model):
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+    track = models.ForeignKey('tracks.Track',related_name='likes',on_delete=models.CASCADE)
