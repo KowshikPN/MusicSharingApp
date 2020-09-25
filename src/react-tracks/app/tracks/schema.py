@@ -3,6 +3,7 @@ from graphene_django import DjangoObjectType
 from .models import Track,Like
 from users.schema import UserType
 from graphql import GraphQLError
+from django.db.models import  Q
 
 class TrackType(DjangoObjectType):
     class Meta:
@@ -14,10 +15,20 @@ class LikeType(DjangoObjectType):
         model = Like
 
 class Query(graphene.ObjectType):
-    tracks = graphene.List(TrackType)
+    tracks = graphene.List(TrackType,search=graphene.String())
     likes = graphene.List(LikeType)
 
-    def resolve_tracks(self,info):
+    def resolve_tracks(self,info,search=None):
+        if search:
+            #Searches based on title.
+            #To search based on multiple fields we use Q object
+            filter = (
+                Q(title__icontains=search) |
+                Q(description__icontains=search) |
+                Q(url__icontains=search) |
+                Q(posted_by__username__icontains=search)
+            )
+            return  Track.objects.filter(filter)  #case insensitive i
         return Track.objects.all()  # returns all the tracks
 
     def resolve_likes(self,info):

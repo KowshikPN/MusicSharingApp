@@ -89,7 +89,7 @@ Backend = Django + Graphql
 
 27. Error handling can be done using GraphQLError.
 
-28. 
+28.
 
 
 
